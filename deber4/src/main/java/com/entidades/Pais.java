@@ -1,45 +1,43 @@
 package com.entidades;
 
-
-
 import java.util.ArrayList;
-import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-
+import java.util.List;
 
 
 @Entity
-
-	
-	
-
 public class Pais {
 	@Id
 	@GeneratedValue
-	
 	private int id;
-	private String nomPais;
+	private String nombrePais;
+	@OneToMany(mappedBy  ="pais", cascade=CascadeType.ALL )
+	private List<Cliente> cliente= new ArrayList<>();
+	
+	
+
 	
 	
 	
-	
-	
-	public Pais() {}
-
-
-
-
-
-	public Pais(int id, String nomPais) {
-		super();
-		this.id = id;
-		this.nomPais = nomPais;
+	public Pais() {
 	}
+	
+	
+
+	
+
+
+	public Pais(String nombrePais) {
+		super();
+		this.nombrePais = nombrePais;
+	}
+
 
 
 
@@ -49,11 +47,7 @@ public class Pais {
 		return id;
 	}
 
-
-
-
-
-	public void setIdPais(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -61,36 +55,37 @@ public class Pais {
 
 
 
-	public String getNomPais() {
-		return nomPais;
+
+	public String getNombrePais() {
+		return nombrePais;
 	}
 
 
 
 
 
-	public void setNomPais(String nomPais) {
-		this.nomPais = nomPais;
+
+	public void setNombrePais(String nombrePais) {
+		this.nombrePais = nombrePais;
 	}
 
 
 
 
 
-	@Override
-	public String toString() {
-		return "Pais [id=" + id + ", nomPais=" + nomPais + "]";
+
+	public List<Cliente> getCliente() {
+		return cliente;
 	}
 
 
 
 
 
-	
-	
-    
-	
-	
 
+	public void setCliente(List<Cliente> cliente) {
+		this.cliente = cliente;
+	}
+
+	
 }
-
